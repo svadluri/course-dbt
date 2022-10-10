@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: Addresses on the platform - street name, zipcode, state and country. 
+    columns: 
+    - name: address_uuid
+      tests:
+      - unique
+      - non_null
+  - name: stg_users
+    description: User details - name, email, phone_number, address_id, and created and updated at records. 
+    columns: 
+    - name: user_uuid
+      tests:
+      - unique
+      - non_null
+  - name: stg_events
+    description: Event details on the platform - session_id, user_id, page_url, created at, event type, order id and product id. 
+    columns: 
+    - name: event_uuid
+      tests:
+      - unique
+      - non_null
+  - name: stg_orders
+    description: Orders placed on the platform - user, promo, address, cost, shipping cost, total, shipping service, and estimated delivery time. 
+    columns: 
+    - name: order_uuid
+      tests:
+      - unique
+      - non_null      
+  - name: stg_order_items
+    description: Orders items for each order placed on the platform - order id, product id and quantity. 
+    columns: 
+    - name: quantity
+      tests:
+      - positive_values
+  - name: stg_products
+    description: Products on the platform - product id, product name, price and inventory. 
+    columns: 
+    - name: product_uuid
+      tests:
+      - unique
+      - non_null    
+  - name: stg_promos
+    description: Promos given on the platform - promo id, discount, promo status. 
+    columns: 
+    - name: promo_id
+      tests:
+      - unique
+      - non_null    
+    - name: discount_usd
+      tests:
+      - positive_values
+                       
